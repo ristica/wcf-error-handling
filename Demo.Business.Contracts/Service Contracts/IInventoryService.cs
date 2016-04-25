@@ -12,23 +12,12 @@ namespace Demo.Business.Contracts
         Product[] GetProducts();
 
         [OperationContract]
-        Product[] GetActiveProducts();
-
-        [OperationContract]
-        [FaultContract(typeof(NotFoundException))]
-        Product GetProductById(int id, bool acceptNullable = false);
-
-        [OperationContract]
-        [TransactionFlow(TransactionFlowOption.Allowed)]
-        Product UpdateProduct(Product product);
-
-        [OperationContract]
-        [FaultContract(typeof(NotFoundException))]
+        [FaultContract(typeof(ArgumentException))]
         [TransactionFlow(TransactionFlowOption.Allowed)]
         void DeleteProduct(int productId);
 
         [OperationContract]
-        [FaultContract(typeof(NotFoundException))]
+        [FaultContract(typeof(NotSupportedException))]
         [TransactionFlow(TransactionFlowOption.Allowed)]
         void ActivateProduct(int productId);
     }

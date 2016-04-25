@@ -27,7 +27,7 @@ namespace Demo.Data.DataRepositories
                 ProductId = 2,
                 ArticleNumber = "vhjukjuh",
                 Description = "Test product 2",
-                IsActive = true,
+                IsActive = false,
                 Name = "Product 2",
                 Price = 200
             },
@@ -45,7 +45,7 @@ namespace Demo.Data.DataRepositories
                 ProductId = 4,
                 ArticleNumber = "25545",
                 Description = "Test product 4",
-                IsActive = true,
+                IsActive = false,
                 Name = "Product 4",
                 Price = 400
             }
@@ -54,21 +54,6 @@ namespace Demo.Data.DataRepositories
         #endregion
 
         #region IProductRepository implementation
-
-        public Product GetProductByArticleNumber(string articleNumber)
-        {
-            return Products.FirstOrDefault(p => p.ArticleNumber.Equals(articleNumber));
-        }
-
-        public Product GetProductById(int productId)
-        {
-            return Products.FirstOrDefault(p => p.ProductId == productId);
-        }
-
-        public Product[] GetActiveProducts()
-        {
-            return Products.Where(p => p.IsActive).ToArray();
-        }
 
         public Product[] GetProducts()
         {
@@ -83,33 +68,6 @@ namespace Demo.Data.DataRepositories
         public void DeactivateProduct(int productId)
         {
             Products.FirstOrDefault(p => p.IsActive).IsActive = false;
-        }
-
-        public Product UpdateProduct(Product product)
-        {
-            var p = Products.FirstOrDefault(x => x.ProductId == product.ProductId);
-
-            if (p == null)
-            {
-                p = new Product
-                {
-                    ArticleNumber = product.ArticleNumber,
-                    Description = product.Description,
-                    IsActive = product.IsActive,
-                    Name = product.Name,
-                    Price = product.Price
-                };
-            }
-            else
-            {
-                p.IsActive = product.IsActive;
-                p.Name = product.Name;
-                p.Price = product.Price;
-                p.ArticleNumber = product.ArticleNumber;
-                p.Description = product.Description;
-            }           
-
-            return p;
         }
 
         #endregion

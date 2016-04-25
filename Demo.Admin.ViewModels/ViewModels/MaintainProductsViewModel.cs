@@ -9,8 +9,6 @@ using Core.Common.Contracts;
 using Demo.Client.Entities;
 using Core.Common;
 using System.ServiceModel;
-using System.ServiceModel.Discovery;
-using System.Linq;
 
 namespace Demo.Admin.ViewModels
 {

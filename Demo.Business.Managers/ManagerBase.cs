@@ -2,6 +2,7 @@
 using System.ComponentModel.Composition;
 using System.ServiceModel;
 using Core.Common.Core;
+using Core.Common.Exceptions;
 
 namespace Demo.Business.Managers
 {
